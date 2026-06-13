@@ -31,11 +31,9 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-black">
-            ED
-          </div>
-          Expert Digital
+        <Link to="/" className="text-2xl font-bold text-primary tracking-tight flex items-center gap-3">
+          <img src="https://i.imgur.com/ur9GB01.jpeg" alt="Expert Digital Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
+          <span>Expert Digital</span>
         </Link>
         
         {/* Desktop Nav */}

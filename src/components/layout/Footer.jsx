@@ -8,11 +8,9 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           
           <div className="space-y-6">
-            <Link to="/" className="text-3xl font-bold text-white tracking-tight flex items-center gap-2">
-              <div className="w-8 h-8 bg-secondary text-white rounded-lg flex items-center justify-center font-black text-lg">
-                ED
-              </div>
-              Expert Digital
+            <Link to="/" className="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
+              <img src="https://i.imgur.com/ur9GB01.jpeg" alt="Expert Digital Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
+              <span>Expert Digital</span>
             </Link>
             <p className="text-gray-400">
               Je propulse vos marques vers le succès digital avec des stratégies sur-mesure et des outils ultra-performants.

@@ -19,11 +19,9 @@ export const Sidebar = () => {
   return (
     <aside className="w-64 bg-white border-r border-gray-100 flex-shrink-0 min-h-screen hidden md:block">
       <div className="p-6">
-        <Link to="/" className="text-xl font-bold text-primary tracking-tight flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 bg-primary text-white rounded-lg flex items-center justify-center font-black">
-            ED
-          </div>
-          Admin
+        <Link to="/" className="text-xl font-bold text-primary tracking-tight flex items-center gap-3 mb-8">
+          <img src="https://i.imgur.com/ur9GB01.jpeg" alt="Expert Digital Logo" className="w-8 h-8 object-contain rounded-lg shadow-sm" />
+          <span>Admin</span>
         </Link>
 
         <nav className="space-y-2">
