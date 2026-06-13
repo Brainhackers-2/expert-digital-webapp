@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/public/Home';
 import { About } from '../pages/public/About';
 import { Services } from '../pages/public/Services';
+import { ServiceDetail } from '../pages/public/ServiceDetail';
 import { Portfolio } from '../pages/public/Portfolio';
 import { Testimonials } from '../pages/public/Testimonials';
 import { Contact } from '../pages/public/Contact';
@@ -25,6 +26,7 @@ export const AppRoutes = () => (
         <Route path="/" element={<Home />} />
         <Route path="/a-propos" element={<About />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/realisations" element={<Portfolio />} />
         <Route path="/temoignages" element={<Testimonials />} />
         <Route path="/contact" element={<Contact />} />
