@@ -26,9 +26,9 @@ export const Header = () => {
 
   return (
     <header 
-      className={\`fixed top-0 left-0 right-0 z-50 transition-all duration-300 \${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-white py-5'
-      }\`}
+      }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
@@ -44,9 +44,9 @@ export const Header = () => {
             <Link 
               key={link.name} 
               to={link.path} 
-              className={\`text-sm font-medium transition-colors hover:text-secondary \${
+              className={`text-sm font-medium transition-colors hover:text-secondary ${
                 location.pathname === link.path ? 'text-secondary' : 'text-gray-600'
-              }\`}
+              }`}
             >
               {link.name}
             </Link>
@@ -77,9 +77,9 @@ export const Header = () => {
               key={link.name} 
               to={link.path} 
               onClick={() => setMobileMenuOpen(false)}
-              className={\`block text-lg font-medium \${
+              className={`block text-lg font-medium ${
                 location.pathname === link.path ? 'text-secondary' : 'text-gray-800'
-              }\`}
+              }`}
             >
               {link.name}
             </Link>
