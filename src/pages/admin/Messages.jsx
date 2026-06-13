@@ -1,0 +1,1 @@
+export const MessagesAdmin = () => <div className="p-8"><h1 className="text-3xl">Messages</h1></div>;

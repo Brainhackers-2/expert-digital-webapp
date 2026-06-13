@@ -1,0 +1,1 @@
+export const Dashboard = () => <div className="p-8"><h1 className="text-3xl">Dashboard Admin</h1></div>;

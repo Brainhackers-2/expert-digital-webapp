@@ -1,0 +1,1 @@
+export const Login = () => <div className="p-8"><h1 className="text-3xl">Connexion Admin</h1></div>;

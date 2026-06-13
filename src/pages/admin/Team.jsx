@@ -1,0 +1,1 @@
+export const TeamAdmin = () => <div className="p-8"><h1 className="text-3xl">Gestion de l'équipe</h1></div>;

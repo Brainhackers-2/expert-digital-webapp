@@ -1,0 +1,1 @@
+export const PortfolioAdmin = () => <div className="p-8"><h1 className="text-3xl">Gestion du Portfolio</h1></div>;

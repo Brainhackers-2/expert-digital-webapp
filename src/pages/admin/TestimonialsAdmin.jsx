@@ -1,0 +1,1 @@
+export const TestimonialsAdmin = () => <div className="p-8"><h1 className="text-3xl">Gestion des Témoignages</h1></div>;

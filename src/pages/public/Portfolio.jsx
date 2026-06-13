@@ -1,0 +1,1 @@
+export const Portfolio = () => <div className="p-8"><h1 className="text-3xl">Réalisations</h1></div>;

@@ -1,0 +1,1 @@
+export const About = () => <div className="p-8"><h1 className="text-3xl">À propos</h1></div>;

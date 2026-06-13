@@ -1,0 +1,1 @@
+export const Services = () => <div className="p-8"><h1 className="text-3xl">Nos Services</h1></div>;
