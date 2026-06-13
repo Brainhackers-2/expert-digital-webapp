@@ -83,20 +83,24 @@ export const Testimonials = () => {
       </section>
 
       {/* Grid of Testimonials */}
-      <section className="py-24 bg-light/30">
-        <div className="container mx-auto px-6 md:px-12">
+      <section className="py-24 bg-[#0B1120] relative overflow-hidden">
+        {/* Subtle grid decorations */}
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none -ml-48"></div>
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] pointer-events-none -mr-48"></div>
+
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
           {testimonials.length === 0 ? (
-            <div className="text-center text-gray-400 py-12">
+            <div className="text-center text-gray-500 py-12">
               Chargement des témoignages...
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, idx) => (
                 <FadeIn key={testimonial.id} delay={0.1 * (idx % 3)}>
-                  <div className="bg-white p-8 rounded-3xl border border-gray-100 shadow-xl shadow-primary/5 hover:shadow-2xl hover:translate-y-[-4px] transition-all duration-300 relative h-full flex flex-col justify-between">
+                  <div className="bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(255,102,51,0.15)] hover:border-secondary/30 hover:translate-y-[-4px] transition-all duration-300 relative h-full flex flex-col justify-between">
                     <div>
                       {/* Quote Icon decorative */}
-                      <Quote className="text-secondary/10 absolute top-6 right-8 w-12 h-12 pointer-events-none" />
+                      <Quote className="text-white/10 absolute top-6 right-8 w-12 h-12 pointer-events-none" />
                       
                       {/* Stars Rating */}
                       <div className="flex gap-1 mb-5">
@@ -107,32 +111,32 @@ export const Testimonials = () => {
                             className={
                               i < testimonial.rating
                                 ? 'text-amber-400 fill-amber-400'
-                                : 'text-gray-200'
+                                : 'text-white/20'
                             }
                           />
                         ))}
                       </div>
 
-                      <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
+                      <p className="text-gray-300 text-sm leading-relaxed mb-6 italic">
                         "{testimonial.message}"
                       </p>
                     </div>
 
                     {/* Customer Info */}
-                    <div className="flex items-center gap-4 border-t border-gray-50 pt-4 mt-auto">
+                    <div className="flex items-center gap-4 border-t border-white/10 pt-4 mt-auto">
                       {testimonial.photo_url ? (
                         <img
                           src={testimonial.photo_url}
                           alt={testimonial.client_name}
-                          className="w-12 h-12 rounded-full object-cover border-2 border-primary/10"
+                          className="w-12 h-12 rounded-full object-cover border-2 border-white/20"
                         />
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-primary/5 text-primary flex items-center justify-center font-bold text-lg">
+                        <div className="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center font-bold text-lg">
                           {testimonial.client_name.charAt(0)}
                         </div>
                       )}
                       <div>
-                        <h4 className="font-bold text-primary text-sm">{testimonial.client_name}</h4>
+                        <h4 className="font-bold text-white text-sm">{testimonial.client_name}</h4>
                         <p className="text-xs text-gray-400">{testimonial.company}</p>
                       </div>
                     </div>
@@ -145,14 +149,15 @@ export const Testimonials = () => {
       </section>
 
       {/* Satisfaction Badge Banner */}
-      <section className="bg-white py-20 border-t border-gray-100">
-        <div className="container mx-auto px-6 md:px-12 text-center max-w-2xl">
+      <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 border-t border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#0B1120]/80"></div>
+        <div className="container mx-auto px-6 md:px-12 text-center max-w-2xl relative z-10">
           <FadeIn className="flex flex-col items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-secondary/20 text-secondary flex items-center justify-center border border-secondary/30">
               <Award size={32} />
             </div>
-            <h3 className="text-2xl font-extrabold text-primary">100% de Clients Recommandés</h3>
-            <p className="text-gray-500 text-sm">
+            <h3 className="text-2xl font-extrabold text-white">100% de Clients Recommandés</h3>
+            <p className="text-gray-400 text-sm">
               Nous nous engageons à offrir une expérience irréprochable et un accompagnement de proximité. Votre satisfaction est notre priorité numéro un.
             </p>
           </FadeIn>
