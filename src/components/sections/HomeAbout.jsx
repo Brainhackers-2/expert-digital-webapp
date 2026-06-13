@@ -1,8 +1,11 @@
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { FadeIn } from '../ui/FadeIn';
+import { useSettings } from '../../hooks/useSettings';
 
 export const HomeAbout = () => {
+  const { settings } = useSettings();
+
   const points = [
     "Une équipe jeune, créative et passionnée",
     "Des stratégies basées sur la data et les résultats",
@@ -22,7 +25,7 @@ export const HomeAbout = () => {
             
             <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white">
               <img 
-                src="/images/agency-team.png" 
+                src={settings.home_about_image || "/images/agency-team.png"} 
                 alt="Équipe Expert Digital" 
                 className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
               />

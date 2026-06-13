@@ -35,6 +35,8 @@ export const SettingsAdmin = () => {
     about_presentation_text1: '',
     about_presentation_text2: '',
     about_image: '',
+    hero_image: '',
+    home_about_image: '',
     why_choose_us_items: ''
   });
 
@@ -366,6 +368,15 @@ export const SettingsAdmin = () => {
                           placeholder="Ex: Création de sites web ultra-performants et gestion stratégique..."
                         />
                       </div>
+                      
+                      <div className="space-y-1 pt-2">
+                        <ImageUploader 
+                          label="Image Dashboard (Hero)"
+                          helpText="L'image illustrant le succès digital dans la section haute de l'accueil."
+                          value={settings.hero_image}
+                          onChange={(val) => setSettings(p => ({ ...p, hero_image: val }))}
+                        />
+                      </div>
                     </div>
                   </div>
 
@@ -387,10 +398,18 @@ export const SettingsAdmin = () => {
                         </div>
                         <div className="space-y-1">
                           <ImageUploader 
-                            label="Image de Présentation"
+                            label="Image de Présentation (Page À Propos)"
                             helpText="Apparaît sur la page À Propos à côté du texte."
                             value={settings.about_image}
                             onChange={(val) => setSettings(p => ({ ...p, about_image: val }))}
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <ImageUploader 
+                            label="Image Équipe (Page Accueil)"
+                            helpText="Apparaît sur l'accueil dans la section À Propos."
+                            value={settings.home_about_image}
+                            onChange={(val) => setSettings(p => ({ ...p, home_about_image: val }))}
                           />
                         </div>
                       </div>

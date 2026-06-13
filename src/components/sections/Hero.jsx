@@ -93,7 +93,7 @@ export const Hero = () => {
             <div className="relative animate-[bounce_6s_infinite] drop-shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-primary/20 blur-3xl rounded-full transform -rotate-6 scale-105"></div>
               <img 
-                src="/images/hero-mockup.png" 
+                src={settings.hero_image || "/images/hero-mockup.png"} 
                 alt="Dashboard Mockup Expert Digital" 
                 className="relative z-10 w-full max-w-[600px] mx-auto rounded-3xl object-cover transform rotate-2 hover:rotate-0 transition-transform duration-500"
               />
