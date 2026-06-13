@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { supabase } from '../../lib/supabaseClient';
 import { useAuth } from '../../hooks/useAuth';
+import { useSettings } from '../../hooks/useSettings';
 import { Loader } from 'lucide-react';
 
 export const Login = () => {
@@ -12,6 +13,7 @@ export const Login = () => {
   
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { settings } = useSettings();
 
   // If user is already logged in, redirect to dashboard
   if (user) {
@@ -40,11 +42,13 @@ export const Login = () => {
     }
   };
 
+  const siteLogo = settings.site_logo || 'https://i.imgur.com/ur9GB01.jpeg';
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 px-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
         <div className="text-center mb-8">
-          <img src="https://i.imgur.com/ur9GB01.jpeg" alt="Expert Digital Logo" className="w-16 h-16 object-contain rounded-2xl mx-auto mb-4 shadow-sm" />
+          <img src={siteLogo} alt="Expert Digital Logo" className="w-16 h-16 object-contain rounded-2xl mx-auto mb-4 shadow-sm" />
           <h1 className="text-2xl font-bold text-gray-900">Connexion Admin</h1>
           <p className="text-gray-500 mt-2">Connectez-vous pour gérer votre site</p>
         </div>

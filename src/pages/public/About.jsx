@@ -10,6 +10,24 @@ export const About = () => {
   const siteTagline = settings.site_tagline || 'Je propulse vos marques vers le succès digital';
   const siteDescription = settings.site_description || 'Expert Digital est une agence marketing digitale basée à Ziguinchor, Sénégal, spécialisée dans la création de sites web professionnels et la gestion des réseaux sociaux. Nous accompagnons les PME et grandes entreprises partout au Sénégal.';
 
+  // Design & Contenu dynamique
+  const aboutPresentationTitle = settings.about_presentation_title || 'Notre histoire & Notre Mission';
+  const aboutImage = settings.about_image || 'https://i.imgur.com/ur9GB01.jpeg';
+  const aboutText1 = settings.about_presentation_text1 || 'Basée à Ziguinchor, Sénégal, Expert Digital est née de la volonté d\'offrir aux PME, commerces locaux et grandes entreprises sénégalaises des outils marketing digitaux performants pour s\'imposer sur le marché.';
+  const aboutText2 = settings.about_presentation_text2 || siteDescription;
+
+  // Parser les items de "Pourquoi nous choisir" ligne par ligne
+  const rawWhyChooseUs = settings.why_choose_us_items;
+  const whyChooseUs = rawWhyChooseUs
+    ? rawWhyChooseUs.split('\n').map(item => item.trim()).filter(Boolean)
+    : [
+        'Équipe jeune, créative et passionnée par le succès de vos projets.',
+        'Expertise locale avec des standards de qualité internationaux.',
+        'Plus de 29 clients satisfaits et 100% de recommandation.',
+        'Accompagnement de A à Z (stratégie, design, code, publicité).',
+        'Solutions adaptées aux budgets des PME et des commerces sénégalais.',
+      ];
+
   const values = [
     {
       title: 'Professionnalisme',
@@ -35,14 +53,6 @@ export const About = () => {
       icon: Lightbulb,
       color: 'text-indigo-600 bg-indigo-50',
     },
-  ];
-
-  const whyChooseUs = [
-    'Équipe jeune, créative et passionnée par le succès de vos projets.',
-    'Expertise locale avec des standards de qualité internationaux.',
-    'Plus de 29 clients satisfaits et 100% de recommandation.',
-    'Accompagnement de A à Z (stratégie, design, code, publicité).',
-    'Solutions adaptées aux budgets des PME et des commerces sénégalais.',
   ];
 
   return (
@@ -73,23 +83,23 @@ export const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn delay={0.1}>
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-extrabold text-primary">Notre histoire & Notre Mission</h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-primary">{aboutPresentationTitle}</h2>
                 <div className="w-16 h-1 bg-secondary rounded-full"></div>
                 <p className="text-gray-600 leading-relaxed text-lg">
-                  Basée à Ziguinchor, Sénégal, <strong>Expert Digital</strong> est née de la volonté d'offrir aux PME, commerces locaux et grandes entreprises sénégalaises des outils marketing digitaux performants pour s'imposer sur le marché.
+                  {aboutText1}
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  {siteDescription} Nous croyons fermement que la transformation digitale est un levier majeur de croissance et d'inclusion économique pour nos communautés.
+                  {aboutText2}
                 </p>
               </div>
             </FadeIn>
             
             <FadeIn delay={0.3}>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-video lg:aspect-square flex items-center justify-center bg-gradient-to-tr from-primary/10 to-secondary/10">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-video lg:aspect-square flex items-center justify-center bg-gray-150">
                 <img 
-                  src="https://i.imgur.com/ur9GB01.jpeg" 
+                  src={aboutImage} 
                   alt="Expert Digital Presentation" 
-                  className="w-48 h-48 object-contain rounded-2xl shadow-xl animate-pulse" 
+                  className="w-full h-full object-cover" 
                 />
               </div>
             </FadeIn>
@@ -112,7 +122,7 @@ export const About = () => {
               const Icon = val.icon;
               return (
                 <FadeIn key={idx} delay={0.1 * idx}>
-                  <div className="bg-white p-8 rounded-3xl border border-gray-50 shadow-lg shadow-primary/5 hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 h-full">
+                  <div className="bg-white p-8 rounded-3xl border border-gray-55 shadow-lg shadow-primary/5 hover:shadow-xl hover:translate-y-[-4px] transition-all duration-300 h-full">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${val.color}`}>
                       <Icon size={24} />
                     </div>
@@ -148,7 +158,7 @@ export const About = () => {
               {team.map((member, idx) => (
                 <FadeIn key={member.id} delay={0.1 * idx}>
                   <div className="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-lg shadow-primary/5 hover:shadow-2xl transition-all duration-300 group">
-                    <div className="relative aspect-square overflow-hidden bg-gray-50">
+                    <div className="relative aspect-square overflow-hidden bg-gray-55">
                       {member.photo_url ? (
                         <img 
                           src={member.photo_url} 

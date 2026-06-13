@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { Save, Shield, Check, Info, Phone, Mail, MapPin, Share2, Globe } from 'lucide-react';
+import { Save, Shield, Check, Info, Phone, Mail, MapPin, Share2, Globe, Palette } from 'lucide-react';
+import { ImageUploader } from '../../components/admin/ImageUploader';
 
 export const SettingsAdmin = () => {
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,18 @@ export const SettingsAdmin = () => {
 
     // General
     site_tagline: '',
-    site_description: ''
+    site_description: '',
+
+    // Design & Content Settings
+    site_logo: '',
+    site_favicon: '',
+    hero_badge: '',
+    hero_subtitle: '',
+    about_presentation_title: '',
+    about_presentation_text1: '',
+    about_presentation_text2: '',
+    about_image: '',
+    why_choose_us_items: ''
   });
 
   const fetchSettings = async () => {
@@ -98,7 +110,8 @@ export const SettingsAdmin = () => {
   const tabs = [
     { id: 'contact', name: 'Coordonnées', icon: Phone },
     { id: 'socials', name: 'Réseaux Sociaux', icon: Share2 },
-    { id: 'general', name: 'Informations Générales', icon: Globe }
+    { id: 'general', name: 'Informations Générales', icon: Globe },
+    { id: 'design', name: 'Design & Contenu', icon: Palette }
   ];
 
   return (
@@ -107,7 +120,7 @@ export const SettingsAdmin = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Paramètres du Site</h1>
-          <p className="text-sm text-gray-500">Configurez les coordonnées, les liens sociaux et les métadonnées de l'agence.</p>
+          <p className="text-sm text-gray-500">Configurez les coordonnées, les logos, les images et les textes de l'agence.</p>
         </div>
       </div>
 
@@ -290,6 +303,133 @@ export const SettingsAdmin = () => {
                         className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="Une description engageante de l'agence pour Google..."
                       />
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'design' && (
+                <div className="space-y-5">
+                  <div className="flex items-center gap-2 text-primary pb-2 border-b border-gray-50">
+                    <Palette size={18} className="font-bold" />
+                    <h3 className="font-bold text-sm text-gray-800 uppercase tracking-wider">Design & Contenus Textuels</h3>
+                  </div>
+
+                  {/* Section: Logos & Favicon */}
+                  <div className="bg-gray-50/50 p-4 rounded-xl border border-gray-100 space-y-4">
+                    <h4 className="font-bold text-xs text-primary uppercase tracking-wide">1. Identité Visuelle (Images)</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <ImageUploader 
+                          label="Logo Principal"
+                          helpText="Affiché dans le header, footer, et la sidebar admin."
+                          value={settings.site_logo}
+                          onChange={(val) => setSettings(p => ({ ...p, site_logo: val }))}
+                        />
+                      </div>
+                      
+                      <div className="space-y-1">
+                        <ImageUploader 
+                          label="Favicon (Onglet)"
+                          helpText="Icône affichée dans l'onglet du navigateur (Idéalement carré)."
+                          value={settings.site_favicon}
+                          onChange={(val) => setSettings(p => ({ ...p, site_favicon: val }))}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Section: Hero */}
+                  <div className="bg-gray-50/50 p-4 rounded-xl border border-gray-100 space-y-4">
+                    <h4 className="font-bold text-xs text-primary uppercase tracking-wide">2. Contenu Section Hero (Accueil)</h4>
+                    <div className="space-y-3">
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-700 uppercase">Texte du Badge Hero</label>
+                        <input
+                          type="text"
+                          name="hero_badge"
+                          value={settings.hero_badge}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder="Ex: Agence digitale N°1 à Ziguinchor"
+                        />
+                      </div>
+                      
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-700 uppercase">Sous-titre explicatif Hero</label>
+                        <textarea
+                          name="hero_subtitle"
+                          rows="2"
+                          value={settings.hero_subtitle}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder="Ex: Création de sites web ultra-performants et gestion stratégique..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Section: About Page */}
+                  <div className="bg-gray-50/50 p-4 rounded-xl border border-gray-100 space-y-4">
+                    <h4 className="font-bold text-xs text-primary uppercase tracking-wide">3. Contenu de la Page À Propos</h4>
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                          <label className="text-xs font-bold text-gray-700 uppercase">Titre de présentation</label>
+                          <input
+                            type="text"
+                            name="about_presentation_title"
+                            value={settings.about_presentation_title}
+                            onChange={handleChange}
+                            className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                            placeholder="Ex: Notre histoire & Notre Mission"
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <ImageUploader 
+                            label="Image de Présentation"
+                            helpText="Apparaît sur la page À Propos à côté du texte."
+                            value={settings.about_image}
+                            onChange={(val) => setSettings(p => ({ ...p, about_image: val }))}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-700 uppercase">Paragraphe de présentation 1</label>
+                        <textarea
+                          name="about_presentation_text1"
+                          rows="3"
+                          value={settings.about_presentation_text1}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder="Saisissez le premier paragraphe de présentation..."
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-700 uppercase">Paragraphe de présentation 2</label>
+                        <textarea
+                          name="about_presentation_text2"
+                          rows="3"
+                          value={settings.about_presentation_text2}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                          placeholder="Saisissez le deuxième paragraphe de présentation..."
+                        />
+                      </div>
+
+                      <div className="space-y-1">
+                        <label className="text-xs font-bold text-gray-700 uppercase">Éléments "Pourquoi nous choisir ?" (Un point par ligne)</label>
+                        <textarea
+                          name="why_choose_us_items"
+                          rows="4"
+                          value={settings.why_choose_us_items}
+                          onChange={handleChange}
+                          className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary font-mono text-xs"
+                          placeholder="Ligne 1 : Équipe jeune et créative&#10;Ligne 2 : Expertise locale..."
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>

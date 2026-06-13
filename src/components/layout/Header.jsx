@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import { useSettings } from '../../hooks/useSettings';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { settings } = useSettings();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,9 @@ export const Header = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  // Dynamic logo with fallback
+  const siteLogo = settings.site_logo || 'https://i.imgur.com/ur9GB01.jpeg';
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -32,7 +37,7 @@ export const Header = () => {
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <Link to="/" className="text-2xl font-bold text-primary tracking-tight flex items-center gap-3">
-          <img src="https://i.imgur.com/ur9GB01.jpeg" alt="Expert Digital Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
+          <img src={siteLogo} alt="Expert Digital Logo" className="w-10 h-10 object-contain rounded-lg shadow-sm" />
           <span>Expert Digital</span>
         </Link>
         
