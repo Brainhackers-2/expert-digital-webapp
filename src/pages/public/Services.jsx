@@ -14,7 +14,7 @@ export const Services = () => {
   const { services } = useServices();
 
   return (
-    <div className="bg-[#0B1120] min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Services Hero */}
       <section className="relative bg-gradient-to-br from-primary to-[#0c1a2f] text-white py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,102,51,0.08),transparent_50%)]"></div>
@@ -36,12 +36,8 @@ export const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 relative">
-        {/* Subtle grid decorations */}
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none -ml-48"></div>
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-secondary/20 rounded-full blur-[120px] pointer-events-none -mr-48"></div>
-        
-        <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <section className="py-24">
+        <div className="container mx-auto px-6 md:px-12">
           {services.length === 0 ? (
             <div className="text-center text-gray-400 py-20">
               <Icons.Loader2 className="animate-spin mx-auto mb-4" size={36} />
@@ -53,31 +49,31 @@ export const Services = () => {
                 const Icon = getIconComponent(service.icon);
                 return (
                   <FadeIn key={service.id} delay={0.1 * (idx % 3)}>
-                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_0_30px_rgba(255,102,51,0.15)] hover:border-secondary/30 hover:translate-y-[-6px] transition-all duration-500 flex flex-col justify-between h-full group">
+                    <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-xl shadow-primary/5 hover:shadow-2xl hover:shadow-primary/10 hover:translate-y-[-6px] transition-all duration-300 flex flex-col justify-between h-full group">
                       <div>
                         {/* Header card */}
                         <div className="flex justify-between items-start mb-6">
-                          <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-all duration-500">
+                          <div className="w-14 h-14 rounded-2xl bg-light flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
                             <Icon size={28} />
                           </div>
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 bg-gray-50 px-3 py-1 rounded-full border border-gray-100">
                             {service.category}
                           </span>
                         </div>
 
-                        <h3 className="text-xl font-bold text-white mb-4 group-hover:text-secondary transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-secondary transition-colors duration-300">
                           {service.title}
                         </h3>
                         
-                        <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                        <p className="text-gray-600 text-sm leading-relaxed mb-8">
                           {service.short_description}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between border-t border-white/10 pt-5 mt-auto">
+                      <div className="flex items-center justify-between border-t border-gray-50 pt-5 mt-auto">
                         <Link 
                           to={`/services/${service.slug}`}
-                          className="inline-flex items-center gap-2 text-secondary font-bold text-sm hover:text-white transition-colors group-hover:underline"
+                          className="inline-flex items-center gap-2 text-primary font-bold text-sm hover:text-secondary transition-colors group-hover:underline"
                         >
                           En savoir plus
                           <Icons.ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -100,14 +96,13 @@ export const Services = () => {
       </section>
 
       {/* Call to Action Banner */}
-      <section className="bg-gradient-to-r from-primary/10 to-secondary/10 py-20 border-t border-white/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#0B1120]/80"></div>
-        <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl relative z-10">
+      <section className="bg-light/60 py-20 border-t border-gray-100">
+        <div className="container mx-auto px-6 md:px-12 text-center max-w-4xl">
           <FadeIn>
-            <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-4">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-primary mb-4">
               Vous avez un besoin spécifique qui n'est pas listé ?
             </h3>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
               Chaque projet est unique. Notre agence est flexible et s'adapte à vos contraintes pour concevoir des offres marketing et technologiques sur-mesure.
             </p>
             <Link 
