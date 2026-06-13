@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { Plus, Edit2, Trash2, Eye, EyeOff, Search, Star, MessageSquare, X, User } from 'lucide-react';
+import { ImageUploader } from '../../components/admin/ImageUploader';
 
 export const TestimonialsAdmin = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -326,26 +327,15 @@ export const TestimonialsAdmin = () => {
                   </div>
 
                   {/* Photo URL */}
-                  <div className="space-y-1">
-                    <label className="text-xs font-bold text-gray-700 uppercase">Photo de profil (URL)</label>
-                    <input
-                      type="text"
+                  <div className="space-y-2">
+                    <ImageUploader 
+                      label="Photo de profil"
+                      helpText="Format carré recommandé"
                       value={formData.photo_url}
-                      onChange={(e) => setFormData({ ...formData, photo_url: e.target.value })}
-                      className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                      placeholder="https://images.unsplash.com/..."
+                      onChange={(val) => setFormData({ ...formData, photo_url: val })}
                     />
                   </div>
                 </div>
-
-                {formData.photo_url && (
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 border border-gray-200/50">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-gray-200 bg-white">
-                      <img src={formData.photo_url} alt="Preview" className="w-full h-full object-cover" />
-                    </div>
-                    <span className="text-xs text-gray-400">Prévisualisation de l'avatar</span>
-                  </div>
-                )}
 
                 {/* Message */}
                 <div className="space-y-1">

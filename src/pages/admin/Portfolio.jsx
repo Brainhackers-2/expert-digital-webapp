@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { Plus, Edit2, Trash2, Eye, EyeOff, Search, Calendar, X, Globe, User } from 'lucide-react';
+import { ImageUploader } from '../../components/admin/ImageUploader';
 
 export const PortfolioAdmin = () => {
   const [items, setItems] = useState([]);
@@ -369,19 +370,12 @@ export const PortfolioAdmin = () => {
 
                 {/* Image URL */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-700 uppercase">Image Principale (URL)</label>
-                  <input
-                    type="text"
+                  <ImageUploader 
+                    label="Image Principale"
+                    helpText="Format recommandé: 16:9 (ex: 1200x675px)"
                     value={formData.image_url}
-                    onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="https://images.unsplash.com/..."
+                    onChange={(val) => setFormData({ ...formData, image_url: val })}
                   />
-                  {formData.image_url && (
-                    <div className="mt-2 relative rounded-xl overflow-hidden h-36 w-full border border-gray-200 bg-gray-50">
-                      <img src={formData.image_url} alt="Preview" className="w-full h-full object-cover" />
-                    </div>
-                  )}
                 </div>
 
                 {/* Gallery URLs */}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { Plus, Edit2, Trash2, Search, Linkedin, X, User } from 'lucide-react';
+import { ImageUploader } from '../../components/admin/ImageUploader';
 
 export const TeamAdmin = () => {
   const [members, setMembers] = useState([]);
@@ -303,21 +304,12 @@ export const TeamAdmin = () => {
 
                 {/* Photo URL */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-gray-700 uppercase">Photo de profil (URL)</label>
-                  <input
-                    type="text"
+                  <ImageUploader 
+                    label="Photo de profil"
+                    helpText="Format carré recommandé (ex: 400x400px)"
                     value={formData.photo_url}
-                    onChange={(e) => setFormData({ ...formData, photo_url: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="https://images.unsplash.com/..."
+                    onChange={(val) => setFormData({ ...formData, photo_url: val })}
                   />
-                  {formData.photo_url && (
-                    <div className="mt-2 flex items-center justify-center bg-gray-50 border border-gray-200/50 rounded-xl p-3 h-28">
-                      <div className="w-20 h-20 rounded-full overflow-hidden border border-gray-200 bg-white">
-                        <img src={formData.photo_url} alt="Preview" className="w-full h-full object-cover" />
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 {/* Biography */}
